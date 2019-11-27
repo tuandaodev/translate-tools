@@ -1,0 +1,15 @@
+{
+  "name": "tuandaodev/TranslateTools",
+  "description": "Tools to translate srt file and import exists translated text in excel to srt file.",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Tuan Dao",
+      "email": "tuandao.dev@gmail.com"
+    }
+  ],
+  "require": {
+    "phpoffice/phpspreadsheet": "1.10.0"
+  }
+}
