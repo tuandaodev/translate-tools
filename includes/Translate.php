@@ -5,8 +5,6 @@ require_once 'functions.php';
 
 function Translate($params, $chunk_items, $has_transliterate = false, $params2 = "") {
 
-
-
     $requestBody = [];
     foreach ($chunk_items as $chunk_key => $chunk_item) {
         $requestBody[]['Text'] = $chunk_item['value'];
@@ -30,7 +28,16 @@ function Translate($params, $chunk_items, $has_transliterate = false, $params2 =
     $context  = stream_context_create ($options);
 
     $path = "/translate?api-version=3.0";
-    $result = file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params, false, $context);
+    $result = @file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params, false, $context);
+    if ($result === false) {
+        echo "Có lỗi xảy ra. Vui lòng kiểm tra. ";
+        $error = error_get_last();
+        echo '<pre>';
+        print_r($error);
+        echo '</pre>';
+        exit;
+    }
+
     $result = json_decode($result, true);
     if ($result) {
         foreach ($result as $key => $item) {
@@ -43,7 +50,16 @@ function Translate($params, $chunk_items, $has_transliterate = false, $params2 =
     //transliterate
     if ($has_transliterate) {
         $path = "/transliterate?api-version=3.0";
-        $result = file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params2, false, $context);
+        $result = @file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params2, false, $context);
+        if ($result === false) {
+            echo "Có lỗi xảy ra. Vui lòng kiểm tra. ";
+            $error = error_get_last();
+            echo '<pre>';
+            print_r($error);
+            echo '</pre>';
+            exit;
+        }
+
         $result = json_decode($result, true);
         if ($result) {
             foreach ($result as $key => $item) {

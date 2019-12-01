@@ -15,7 +15,7 @@ require_once 'includes/Transliterate.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Translate Excel - Translation Tools</title>
+    <title>Add Text to Srt - SRT Tools</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -40,6 +40,10 @@ $translation_destination_selected = isset($_REQUEST['translation_destination']) 
 $transliteration_source_selected = isset($_REQUEST['transliteration_source']) ? $_REQUEST['transliteration_source'] : 'Hans';
 
 if (isset($_POST['go_translate'])) {
+
+    $endTime = DateTime::createFromFormat('Y-m-d H:i:s,u', "0-01-01" . $_REQUEST['endTime']);
+    $startTime = DateTime::createFromFormat('Y-m-d H:i:s,u', "0-01-01" . $_REQUEST['startTime']);
+
     $has_transliteration = false;
     $params2 = "";
     if (isset($_POST['has_transliteration']) && $_POST['has_transliteration'] == 'on') {
@@ -124,65 +128,34 @@ if (isset($_POST['go_translate'])) {
 
 <div class="container">
     <div class="py-5 text-center">
-        <h2>Translation Tools</h2>
+        <h2>SRT Tools</h2>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <h4 class="mb-3">Translate Excel Content</h4>
+            <h4 class="mb-3">Add Text to SRT</h4>
             <form method="POST" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="country">Language Source</label>
-
-                        <select class="custom-select d-block w-100" id="" name="translation_source" required="">
-                            <option value="0">Auto Detected</option>
-                            <?php
-                            build_list_options($translation_languages, $translation_source_selected);
-                            ?>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="state">Language Destination</label>
-                        <select class="custom-select d-block w-100" id="" name="translation_destination" required="">
-                            <?php
-                            build_list_options($translation_languages, $translation_destination_selected);
-                            ?>
-                        </select>
-                    </div>
-                </div>
-
-                <hr class="mb-4">
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="country">Tùy chọn</label>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="save-info"
-                                   name="has_transliteration">
-                            <label class="custom-control-label" for="save-info">Phiên Âm</label>
-                        </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="firstName">Start Time</label>
+                        <input type="text" class="form-control" id="" name="startTime" placeholder="" value="00:01:41,800">
                     </div>
-                    <div class="col-md-6">
-                        <label for="state">Transliteration Language</label>
-                        <select class="custom-select d-block w-100" id="" name="transliteration_source">
-                            <?php
-                            build_list_options_transliteration_languages($transliteration_languages, $transliteration_source_selected);
-                            ?>
-                        </select>
+                    <div class="col-md-4 mb-3">
+                        <label for="lastName">End Time</label>
+                        <input type="text" class="form-control" id="" name="endTime" placeholder="" value="00:01:58,780">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="firstName">Time per word (second)</label>
+                        <input type="text" class="form-control" id="" name="timePerWord" placeholder="" value="0.4">
                     </div>
                 </div>
-
                 <hr class="mb-4">
                 <div class="row">
                     <div class="col-md-6 mb-6">
                         <label for="cc-expiration">Input File (Excel)</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="importfile" name="importfile"
-                                   required="true"/>
+                            <input type="file" class="custom-file-input" id="importfile" name="importfile" />
                             <label class="custom-file-label" for="importfile">Choose file</label>
                         </div>
                     </div>
