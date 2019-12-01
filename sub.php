@@ -43,6 +43,11 @@ $transliteration_source_selected = isset($_REQUEST['transliteration_source']) ? 
 
 if (isset($_POST['go_translate'])) {
 
+    $count_by_mb_str = false;
+    if (isset($_POST['count_by_mb_str']) && $_POST['count_by_mb_str'] == 'on') {
+        $count_by_mb_str = true;
+    }
+
     $timePerWord = isset($_REQUEST['timePerWord']) ? $_REQUEST['timePerWord'] : 0;
 
     $upload_dir = __DIR__ . '/import-files/';
@@ -82,16 +87,22 @@ if (isset($_POST['go_translate'])) {
     $totalWords = 0;
 
     foreach ($import_rows as $key => $item) {
-        if (trim($item['value'])) {
-            $item['value'] = str_replace("\r\n", "\n", $item['value']);
-            $lines = explode("\n", $item['value']);
-            if (is_array($lines)) {
-                $import_rows[$key]['value'] = $lines;
-            } else {
-                $import_rows[$key]['value'][] = $item['value'];
-            }
+        $item['value'] = trim($item['value']);
+
+        $item['value'] = str_replace("\r\n", "\n", $item['value']);
+        $lines = explode("\n", $item['value']);
+        if (is_array($lines)) {
+            $import_rows[$key]['value'] = $lines;
+        } else {
+            $import_rows[$key]['value'][] = $item['value'];
         }
-        $count = str_word_count(reset($import_rows[$key]['value']));
+
+        if ($count_by_mb_str) {
+            $count = mb_strlen($import_rows[$key]['value'][0], 'utf8');
+        } else {
+            $count = str_word_count($import_rows[$key]['value'][0]);
+        }
+
         $import_rows[$key]['count'] = $count;
         $totalWords += $count;
     }
@@ -156,19 +167,54 @@ if (isset($_POST['go_translate'])) {
         $currentTime = $startTime;
         $subtitles = new Subtitles();
 
+
         //Tinh thoi gian giua cac cau
         $tongSoCau = count($import_rows);
+        //echo "Tong so cau: " . $tongSoCau;
+        //echo '<br/>';
         $totalTime = $endTime - $startTime;
+        //echo "Total Time: {$totalTime}" . '<br/>';
         $totalWordsTime = $totalWords * $timePerWord;
+        //echo "totalWordsTime: {$totalTime}" . '<br/>';
+//        echo '<pre>';
+//        print_r($import_rows);
+//        echo '</pre>';
+//        exit;
+
+        /**
+         * Check đếm chữ tượng hình
+         */
+        $check_chu_tuong_hinh = false;
+        $count_0 = 0;
+        foreach ($import_rows as $item) {
+            if ($item['count'] == 0) $count_0++;
+        }
+        if ($count_0 == count($import_rows)) {
+            echo "Đang không đếm được từ trong câu. Vui lòng chọn Tùy chọn chữ tượng hình.";
+            exit;
+        }
+        /**
+         * End check chữ tượng hình
+         */
 
         if ($totalTime - $totalWordsTime < 0) {
             echo "Tổng thời gian không đủ để thực hiện sub. Vui lòng thử lại.<br/>";
             echo "Start Time - End Time = {$totalTime} giây.<br/>";
-            echo "Tổng số từ x Thời gian mỗi từ = {$totalWords} x {$timePerWord} = {$totalWordsTime} giây.<br/>";
+            echo "[Tổng số từ] x [Thời gian mỗi từ] = {$totalWords} x {$timePerWord} = " . gmdate("H:i:s", $totalWordsTime) . " giây<br/>";
             exit;
         }
-        $timeBetweenSentense = $totalTime - $totalWordsTime;
-        $timeBetweenSentense = $timeBetweenSentense/($tongSoCau - 1);
+        $timeBetweenSentense = ($totalTime - $totalWordsTime)*1000;
+
+        //echo $tongSoCau;
+        //exit;
+
+        $timeBetweenSentense = (float)$timeBetweenSentense/($tongSoCau - 1);
+        $timeBetweenSentense = (float)$timeBetweenSentense/1000;
+        $timeBetweenSentense = round($timeBetweenSentense, 2);
+
+        //echo $timeBetweenSentense;
+        //exit;
+        //exit;
 
         foreach ($import_rows as $key => $item) {
             $endCurrentTime = $currentTime + ($item['count'] * $timePerWord);
@@ -207,17 +253,27 @@ require_once './includes/nav.php';
             <form method="POST" enctype="multipart/form-data">
 
                 <div class="row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="firstName">Start Time</label>
                         <input type="text" class="form-control" id="" name="startTime" placeholder="" value="00:02:00,000">
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="lastName">End Time</label>
                         <input type="text" class="form-control" id="" name="endTime" placeholder="" value="00:10:30,000">
                     </div>
-                    <div class="col-md-4 mb-3">
+                </div>
+                <hr class="mb-4">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
                         <label for="firstName">Time per word (second)</label>
-                        <input type="text" class="form-control" id="" name="timePerWord" placeholder="" value="0.4">
+                        <input type="text" class="form-control" id="" name="timePerWord" placeholder="" value="0.4" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="country">Tùy chọn</label>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="save-info" name="count_by_mb_str" checked>
+                            <label class="custom-control-label" for="save-info">Chữ tượng hình (Trung Quốc, Hàn Quốc, Nhật...)</label>
+                        </div>
                     </div>
                 </div>
                 <hr class="mb-4">
@@ -225,7 +281,7 @@ require_once './includes/nav.php';
                     <div class="col-md-6 mb-6">
                         <label for="cc-expiration">Input File (Excel)</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="importfile" name="importfile" />
+                            <input type="file" class="custom-file-input" id="importfile" name="importfile" required />
                             <label class="custom-file-label" for="importfile">Choose file</label>
                         </div>
                     </div>

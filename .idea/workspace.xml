@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d260c038-9944-4c9c-be2c-fc55ed694dee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/nav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/captions.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/captions_new.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/import-files/captions_new_exported.srt" beforeDir="false" afterPath="$PROJECT_DIR$/import-files/captions_new_exported.srt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/Transliterate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/includes/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sub.php" beforeDir="false" afterPath="$PROJECT_DIR$/sub.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/Subtitles.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/Subtitles.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +90,8 @@
       <workItem from="1575198102337" duration="1554000" />
       <workItem from="1575199660900" duration="1529000" />
       <workItem from="1575201227067" duration="149000" />
-      <workItem from="1575201402013" duration="208000" />
+      <workItem from="1575201402013" duration="399000" />
+      <workItem from="1575209441985" duration="2418000" />
     </task>
     <servers />
   </component>
