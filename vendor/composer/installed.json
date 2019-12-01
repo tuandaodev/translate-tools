@@ -1,5 +1,34 @@
 [
     {
+        "name": "mantas-done/subtitles",
+        "version": "v0.3.7",
+        "version_normalized": "0.3.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mantas-done/subtitles.git",
+            "reference": "c11531b7a191b97e25235fabc804368a52326108"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mantas-done/subtitles/zipball/c11531b7a191b97e25235fabc804368a52326108",
+            "reference": "c11531b7a191b97e25235fabc804368a52326108",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.0"
+        },
+        "time": "2019-02-09T17:25:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "Subtitle converter and generator for PHP"
+    },
+    {
         "name": "markbaker/complex",
         "version": "1.4.7",
         "version_normalized": "1.4.7.0",
@@ -165,173 +194,6 @@
             "mathematics",
             "matrix",
             "vector"
-        ]
-    },
-    {
-        "name": "mbilbille/jpnforphp",
-        "version": "0.8.1",
-        "version_normalized": "0.8.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mbilbille/jpnforphp.git",
-            "reference": "5e87ee9d4b0b41389002cbcbf384c42987e3fbae"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/mbilbille/jpnforphp/zipball/5e87ee9d4b0b41389002cbcbf384c42987e3fbae",
-            "reference": "5e87ee9d4b0b41389002cbcbf384c42987e3fbae",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=7.1"
-        },
-        "replace": {
-            "jpnforphp/analyzer": "self.version",
-            "jpnforphp/converter": "self.version",
-            "jpnforphp/helper": "self.version",
-            "jpnforphp/inflector": "self.version",
-            "jpnforphp/transliterator": "self.version"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "7.*",
-            "symfony/yaml": ">=2.3"
-        },
-        "time": "2019-05-23T13:33:07+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.9-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "JpnForPhp": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Matthieu Bilbille",
-                "email": "matthieu.bilbille@gmail.com",
-                "homepage": "https://github.com/mbilbille"
-            }
-        ],
-        "description": "A tiny PHP lib which provides nice functions & wrappers to interact with Japanese language.",
-        "homepage": "http://mbilbille.github.com/jpnforphp/",
-        "keywords": [
-            "japanese",
-            "library"
-        ]
-    },
-    {
-        "name": "overtrue/laravel-pinyin",
-        "version": "4.0.0",
-        "version_normalized": "4.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/overtrue/laravel-pinyin.git",
-            "reference": "c0b15aa49eac08bff80122010b91a0b3fe0f1e21"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/overtrue/laravel-pinyin/zipball/c0b15aa49eac08bff80122010b91a0b3fe0f1e21",
-            "reference": "c0b15aa49eac08bff80122010b91a0b3fe0f1e21",
-            "shasum": ""
-        },
-        "require": {
-            "overtrue/pinyin": "~4.0"
-        },
-        "time": "2018-10-10T09:02:46+00:00",
-        "type": "library",
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "Overtrue\\LaravelPinyin\\ServiceProvider"
-                ],
-                "aliases": {
-                    "Pinyin": "Overtrue\\LaravelPinyin\\Facades\\Pinyin"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Overtrue\\LaravelPinyin\\": "src/"
-            },
-            "files": [
-                "src/helpers.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "overtrue",
-                "email": "anzhengchao@gmail.com"
-            }
-        ],
-        "description": "Chinese to Pinyin translator.",
-        "keywords": [
-            "Chinese",
-            "Pinyin",
-            "laravel",
-            "overtrue"
-        ]
-    },
-    {
-        "name": "overtrue/pinyin",
-        "version": "4.0.5",
-        "version_normalized": "4.0.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/overtrue/pinyin.git",
-            "reference": "94fdb3ea6eca5677afd9548111d95bedcd5a4086"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/overtrue/pinyin/zipball/94fdb3ea6eca5677afd9548111d95bedcd5a4086",
-            "reference": "94fdb3ea6eca5677afd9548111d95bedcd5a4086",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~7.5"
-        },
-        "time": "2019-09-20T12:43:45+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Overtrue\\Pinyin\\": "src/"
-            },
-            "files": [
-                "src/const.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Carlos",
-                "homepage": "http://github.com/overtrue"
-            }
-        ],
-        "description": "Chinese to pinyin translator.",
-        "homepage": "https://github.com/overtrue/pinyin",
-        "keywords": [
-            "Chinese",
-            "Pinyin",
-            "cn2pinyin"
         ]
     },
     {

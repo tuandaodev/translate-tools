@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625
+class ComposerStaticInit5a0e8f421408908635ffa885721a142b
 {
     public static $files = array (
         'abede361264e2ae69ec1eee813a101af' => __DIR__ . '/..' . '/markbaker/complex/classes/src/functions/abs.php',
@@ -65,8 +65,6 @@ class ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625
         'aa53dcba601214d17ad405b7c291b7e8' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/multiply.php',
         '75c79eb1b25749b05a47976f32b0d8a2' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/divideby.php',
         '6ab8ad87a734f276a6bcd5a0fe1289be' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/divideinto.php',
-        'dc1275c308c5b416beb314b6317daca2' => __DIR__ . '/..' . '/overtrue/pinyin/src/const.php',
-        'cda2d2f579338909929d3104d0afc501' => __DIR__ . '/..' . '/overtrue/laravel-pinyin/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -74,11 +72,6 @@ class ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625
         array (
             'Psr\\SimpleCache\\' => 16,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
-        ),
-        'O' => 
-        array (
-            'Overtrue\\Pinyin\\' => 16,
-            'Overtrue\\LaravelPinyin\\' => 23,
         ),
         'M' => 
         array (
@@ -99,14 +92,6 @@ class ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
-        'Overtrue\\Pinyin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/overtrue/pinyin/src',
-        ),
-        'Overtrue\\LaravelPinyin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/overtrue/laravel-pinyin/src',
-        ),
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
@@ -117,22 +102,25 @@ class ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'J' => 
-        array (
-            'JpnForPhp' => 
-            array (
-                0 => __DIR__ . '/..' . '/mbilbille/jpnforphp/src',
-            ),
-        ),
+    public static $classMap = array (
+        'Done\\Subtitles\\AssConverter' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/AssConverter.php',
+        'Done\\Subtitles\\ConverterContract' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/ConverterContract.php',
+        'Done\\Subtitles\\Helpers' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Helpers.php',
+        'Done\\Subtitles\\SbvConverter' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/SbvConverter.php',
+        'Done\\Subtitles\\SrtConverter' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/SrtConverter.php',
+        'Done\\Subtitles\\StlConverter' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/StlConverter.php',
+        'Done\\Subtitles\\SubConverter' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/SubConverter.php',
+        'Done\\Subtitles\\SubtitleContract' => __DIR__ . '/..' . '/mantas-done/subtitles/src/Subtitles.php',
+        'Done\\Subtitles\\Subtitles' => __DIR__ . '/..' . '/mantas-done/subtitles/src/Subtitles.php',
+        'Done\\Subtitles\\VttConverter' => __DIR__ . '/..' . '/mantas-done/subtitles/src/code/Converters/VttConverter.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit8bf506c28a4cf063bd0b9b9a3f11c625::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5a0e8f421408908635ffa885721a142b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5a0e8f421408908635ffa885721a142b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5a0e8f421408908635ffa885721a142b::$classMap;
 
         }, null, ClassLoader::class);
     }

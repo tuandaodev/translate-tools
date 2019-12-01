@@ -3,7 +3,7 @@
 require_once 'vendor\autoload.php';
 require_once 'includes/Translate.php';
 
-$params = "&to=vi";
+$params = "&from=ja&to=vi";
 
 $text = "Hello, world!";
 

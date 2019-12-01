@@ -1,21 +1,10 @@
 <?php
 
 require_once './config.php';
+require_once 'functions.php';
 
 // Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
 //$params = "&language=ja&fromScript=jpan&toScript=latn";
-
-if (!function_exists('com_create_guid')) {
-  function com_create_guid() {
-    return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
-        mt_rand( 0, 0xffff ),
-        mt_rand( 0, 0x0fff ) | 0x4000,
-        mt_rand( 0, 0x3fff ) | 0x8000,
-        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
-    );
-  }
-}
 
 function Transliterate ($params, $content) {
 

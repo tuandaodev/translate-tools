@@ -1,32 +1,24 @@
 <?php
 
 require_once './config.php';
+require_once 'functions.php';
 
-//$params = "&to=de&to=it";
+function Translate($params, $chunk_items, $has_transliterate = false, $params2 = "") {
 
-if (!function_exists('com_create_guid')) {
-  function com_create_guid() {
-    return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
-        mt_rand( 0, 0xffff ),
-        mt_rand( 0, 0x0fff ) | 0x4000,
-        mt_rand( 0, 0x3fff ) | 0x8000,
-        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
-    );
-  }
-}
 
-function Translate ($params, $content) {
 
-    $path = "/translate?api-version=3.0";
+    $requestBody = [];
+    foreach ($chunk_items as $chunk_key => $chunk_item) {
+        $requestBody[]['Text'] = $chunk_item['value'];
+    }
+
+    $content = json_encode($requestBody);
 
     $headers = "Content-type: application/json\r\n" .
         "Content-length: " . strlen($content) . "\r\n" .
         "Ocp-Apim-Subscription-Key: ". TRANSLATOR_TEXT_SUBSCRIPTION_KEY . "\r\n" .
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
-    // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -34,31 +26,35 @@ function Translate ($params, $content) {
             'content' => $content
         )
     );
-    $context  = stream_context_create ($options);
-    $result = file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params, false, $context);
 
+    $context  = stream_context_create ($options);
+
+    $path = "/translate?api-version=3.0";
+    $result = file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params, false, $context);
     $result = json_decode($result, true);
-    echo '<pre>';
-    print_r($result);
-    echo '</pre>';
-    exit;
-    if ($result)
-        return $result;
-    return false;
+    if ($result) {
+        foreach ($result as $key => $item) {
+            if (isset($item['translations'][0]['text'])) {
+                $chunk_items[$key]['value'] .= "\r\n" . $item['translations'][0]['text'];
+            }
+        }
+    }
+
+    //transliterate
+    if ($has_transliterate) {
+        $path = "/transliterate?api-version=3.0";
+        $result = file_get_contents (TRANSLATOR_TEXT_ENDPOINT . $path . $params2, false, $context);
+        $result = json_decode($result, true);
+        if ($result) {
+            foreach ($result as $key => $item) {
+                if (isset($item['text'])) {
+                    $chunk_items[$key]['value'] .= "\r\n" . $item['text'];
+                }
+            }
+        }
+    }
+
+    return $chunk_items;
 }
-//
-//$requestBody = array (
-//    array (
-//        'Text' => $text,
-//    ),
-//);
-//$content = json_encode($requestBody);
-//
-//$result = Translate ($params, $content);
-//
-//// Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-//// We want to avoid escaping any Unicode characters that result contains. See:
-//// http://php.net/manual/en/function.json-encode.php
-//$json = json_encode(json_decode($result), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-//echo $json;
-//?>
+
+?>
