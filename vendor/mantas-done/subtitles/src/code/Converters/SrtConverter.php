@@ -12,19 +12,57 @@ class SrtConverter implements ConverterContract {
     {
         $internal_format = []; // array - where file content will be stored
 
-        $blocks = explode("\n\n", trim($file_content)); // each block contains: start and end times + text
-        foreach ($blocks as $block) {
-            $lines = explode("\n", $block); // separate all block lines
-            $times = explode(' --> ', $lines[1]); // one the second line there is start and end times
+        $matches = $this->splitData($file_content);
+        foreach ($matches as $match) {
+            $times = $this->timeMatch($match[0]);
+            $text = $this->textMatch(isset($match[1]) ? $match[1] : '');
 
             $internal_format[] = [
-                'start' => static::srtTimeToInternal($times[0]),
-                'end' => static::srtTimeToInternal($times[1]),
-                'lines' => array_slice($lines, 2), // get all the remaining lines from block (if multiple lines of text)
+                'start' => static::srtTimeToInternal($times['start_time']),
+                'end' => static::srtTimeToInternal($times['end_time']),
+                'lines' => $text, // get all the remaining lines from block (if multiple lines of text)
             ];
         }
 
         return $internal_format;
+    }
+
+    private function splitData($data)
+    {
+        //find digits followed by a single line break and timestamps
+        $sections = preg_split('/\d+(?:\r\n|\r|\n)(?=(?:\d\d:\d\d:\d\d,\d\d\d)\s-->\s(?:\d\d:\d\d:\d\d,\d\d\d))/m', $data,-1,PREG_SPLIT_NO_EMPTY);
+        $matches = [];
+        foreach ($sections as $section) {
+            //cleans out control characters, borrowed from https://stackoverflow.com/a/23066553
+            $section = preg_replace('/[^\PC\s]/u', '', $section);
+            if(trim($section) == '') continue;
+            $matches[] = preg_split('/(\r\n|\r|\n)/', $section, 2,PREG_SPLIT_NO_EMPTY);
+        }
+        return $matches;
+    }
+
+    private static function timeMatch($timeString)
+    {
+        $matches = [];
+        preg_match_all('/(\d\d:\d\d:\d\d,\d\d\d)\s-->\s(\d\d:\d\d:\d\d,\d\d\d)/', $timeString, $matches,
+            PREG_SET_ORDER);
+        $time = $matches[0];
+        return [
+            'start_time' => $time[1],
+            'end_time'   => $time[2]
+        ];
+    }
+    private static function textMatch($textString)
+    {
+        $text = rtrim($textString);
+        if ($text) {
+            $text = explode("\r\n", $text);
+            if ($text)
+                return $text;
+            return '';
+        }
+
+        return '';
     }
 
     /**
@@ -41,7 +79,12 @@ class SrtConverter implements ConverterContract {
             $nr = $k + 1;
             $start = static::internalTimeToSrt($block['start']);
             $end = static::internalTimeToSrt($block['end']);
-            $lines = implode("\r\n", $block['lines']);
+
+            if ($block['lines']) {
+                $lines = implode("\r\n", $block['lines']);
+            } else {
+                $lines = $block['lines'];
+            }
 
             $file_content .= $nr . "\r\n";
             $file_content .= $start . ' --> ' . $end . "\r\n";

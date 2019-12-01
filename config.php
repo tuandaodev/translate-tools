@@ -8,3 +8,5 @@ if (!defined("TRANSLATOR_TEXT_SUBSCRIPTION_KEY")) {
 if (!defined("TRANSLATOR_TEXT_ENDPOINT")) {
     define("TRANSLATOR_TEXT_ENDPOINT", "https://api.cognitive.microsofttranslator.com");
 }
+
+set_time_limit(0);

@@ -11,6 +11,7 @@
   ],
   "require": {
     "phpoffice/phpspreadsheet": "1.10.0",
-    "mantas-done/subtitles": "^0.3.7"
+    "mantas-done/subtitles": "^0.3.7",
+    "nesbot/carbon": "2.27.0"
   }
 }

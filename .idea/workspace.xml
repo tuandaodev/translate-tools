@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d260c038-9944-4c9c-be2c-fc55ed694dee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/Translate.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/Translate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/captions_new.srt" beforeDir="false" afterPath="$PROJECT_DIR$/captions_new.srt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import-files/Book-20rows_exported.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sub.php" beforeDir="false" afterPath="$PROJECT_DIR$/sub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subfunc.php" beforeDir="false" afterPath="$PROJECT_DIR$/subfunc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/SrtConverter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/SrtConverter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/VttConverter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/VttConverter.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +50,10 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/mantas-done/subtitles" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
     </include_path>
   </component>
   <component name="ProjectId" id="1U91NiTEfE3dUVH7ciPkolc6HTt" />
@@ -67,6 +83,9 @@
       </list>
     </option>
   </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -81,7 +100,8 @@
       <workItem from="1574774448186" duration="1996000" />
       <workItem from="1574820845744" duration="5241000" />
       <workItem from="1574844996608" duration="3746000" />
-      <workItem from="1575114411180" duration="16366000" />
+      <workItem from="1575114411180" duration="25363000" />
+      <workItem from="1575194618428" duration="2749000" />
     </task>
     <servers />
   </component>
