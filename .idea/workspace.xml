@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d260c038-9944-4c9c-be2c-fc55ed694dee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/nav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/captions_new.srt" beforeDir="false" afterPath="$PROJECT_DIR$/captions_new.srt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import-files/Book-20rows_exported.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/captions.srt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captions_new.srt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/import-files/captions_new_exported.srt" beforeDir="false" afterPath="$PROJECT_DIR$/import-files/captions_new_exported.srt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/Transliterate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/includes/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sub.php" beforeDir="false" afterPath="$PROJECT_DIR$/sub.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subfunc.php" beforeDir="false" afterPath="$PROJECT_DIR$/subfunc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/SrtConverter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/SrtConverter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/VttConverter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/code/Converters/VttConverter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/Subtitles.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mantas-done/subtitles/src/Subtitles.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,11 +60,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\test\includes" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\test\includes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -101,7 +97,11 @@
       <workItem from="1574820845744" duration="5241000" />
       <workItem from="1574844996608" duration="3746000" />
       <workItem from="1575114411180" duration="25363000" />
-      <workItem from="1575194618428" duration="2749000" />
+      <workItem from="1575194618428" duration="3381000" />
+      <workItem from="1575198102337" duration="1554000" />
+      <workItem from="1575199660900" duration="1529000" />
+      <workItem from="1575201227067" duration="149000" />
+      <workItem from="1575201402013" duration="208000" />
     </task>
     <servers />
   </component>

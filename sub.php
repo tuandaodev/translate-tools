@@ -8,7 +8,6 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 require_once 'includes/Translate.php';
-require_once 'includes/Transliterate.php';
 
 ?>
 <html lang="en">
@@ -24,6 +23,7 @@ require_once 'includes/Transliterate.php';
 
 <?php
 
+$page="srt";
 $url = TRANSLATOR_TEXT_ENDPOINT . "/languages?api-version=3.0";
 
 $json = file_get_contents($url);
@@ -99,8 +99,10 @@ if (isset($_POST['go_translate'])) {
 
     if (isset($_FILES['importfilesrt']['name']) && !empty($_FILES['importfilesrt']['name'])) {
         $file_srt = file_get_contents($_FILES['importfilesrt']['tmp_name']);
-        $subtitles = Subtitles::load($file_srt, 'srt');
-        $sub_content = $subtitles->getInternalFormat();
+        $OLDsubtitles = Subtitles::load($file_srt, 'srt');
+        $sub_content = $OLDsubtitles->getInternalFormat();
+
+        $subtitles = new Subtitles();
 
         $endTime = 0;
         foreach ($sub_content as $key => $sub_row) {
@@ -111,22 +113,24 @@ if (isset($_POST['go_translate'])) {
                 break;
             }
 
-            $endTime = $sub_content[$key]['end'];
-            if (is_array($sub_content[$key]['lines'])) {
-                $sub_content[$key]['lines'] = array_merge($sub_content[$key]['lines'], $first_element['value']);
-            } else {
-                $sub_content[$key]['lines'] = $first_element['value'];
-            }
+            $endTime = $sub_row['end'];
+            $subtitles->add($sub_row['start'], $sub_row['end'], $first_element['value']);
         }
 
-        $subtitles->setInternalFormat($sub_content);
+        //$subtitles->setInternalFormat($sub_content);
 
+        $currentTime = $endTime + 0.5;
+        $endCurrentTime = $currentTime;
         if (count($import_rows) > 0) {
             foreach ($import_rows as $key => $import_row) {
-                $subtitles->add($endTime, $endTime + $import_row['count'] * $timePerWord, $import_row['value']);
-                $endTime = $endTime + $import_row['count'] * $timePerWord;
+                $endCurrentTime = $currentTime + $import_row['count'] * $timePerWord;
+                $subtitles->add($currentTime, $endCurrentTime , $import_row['value'], false);
+                $currentTime = $endCurrentTime;
             }
         }
+
+        //$sub_content = $subtitles->getInternalFormat();
+
 
         $file_info = pathinfo($_FILES['importfilesrt']['name']);
         $file_output = __DIR__ . '/import-files/' . $file_info['filename'] . '_exported.' . 'srt';
@@ -168,7 +172,7 @@ if (isset($_POST['go_translate'])) {
 
         foreach ($import_rows as $key => $item) {
             $endCurrentTime = $currentTime + ($item['count'] * $timePerWord);
-            $subtitles->add($currentTime, $endCurrentTime, $item['value']);
+            $subtitles->add($currentTime, $endCurrentTime, $item['value'], false);
             $currentTime = $endCurrentTime + $timeBetweenSentense;
         }
 
@@ -182,29 +186,15 @@ if (isset($_POST['go_translate'])) {
         header("Location: {$file_output_url}");
         exit;
     }
-
-    echo '<pre>';
-    print_r($import_rows);
-    echo '</pre>';
-    exit;
-
-//
-//    $file_info = pathinfo($_FILES['importfile']['name']);
-//    $file_output = __DIR__ . '/import-files/' . $file_info['filename'] . '_exported.' . $file_info['extension'];
-//    $upload_url = 'import-files/';
-//    $file_output_url = $upload_url . $file_info['filename'] . '_exported.' . $file_info['extension'];
-//
-//    $writer = IOFactory::createWriter($spreadsheet, "Xlsx");
-
-    //$writer->save($file_output);
-
-    //header("Location: {$file_output_url}");
-    //exit;
 }
 ?>
 
 
 <body>
+
+<?php
+require_once './includes/nav.php';
+?>
 
 <div class="container">
     <div class="py-5 text-center">
@@ -255,22 +245,11 @@ if (isset($_POST['go_translate'])) {
         </div>
     </div>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1"><a href="https://freelancerhcm.com" target="_blank">FreelancerHCM.Com</a></p>
-    </footer>
+    <?php
+    require_once './includes/footer.php';
+    ?>
+
 </div>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<script src="scripts.js"></script>
 
 </body>
 </html>

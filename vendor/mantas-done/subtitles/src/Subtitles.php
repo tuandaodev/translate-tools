@@ -52,7 +52,7 @@ class Subtitles implements SubtitleContract {
         return $this;
     }
 
-    public function add($start, $end, $text)
+    public function add($start, $end, $text, $sort = true)
     {
         // @TODO validation
         // @TODO check subtitles to not overlap
@@ -62,7 +62,8 @@ class Subtitles implements SubtitleContract {
             'lines' => is_array($text) ? $text : [$text],
         ];
 
-        $this->sortInternalFormat();
+        if ($sort)
+            $this->sortInternalFormat();
 
         return $this;
     }
