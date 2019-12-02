@@ -48,6 +48,16 @@ if (isset($_POST['go_translate'])) {
         $params2 = "&language={$translation_source_selected}&fromScript={$transliteration_source_selected}&toScript=latn";
     }
 
+    $has_sourceText = false;
+    if (isset($_POST['has_sourceText']) && $_POST['has_sourceText'] == 'on') {
+        $has_sourceText = true;
+    }
+
+    $has_translateText = false;
+    if (isset($_POST['has_translateText']) && $_POST['has_translateText'] == 'on') {
+        $has_translateText = true;
+    }
+
     $upload_dir = __DIR__ . '/import-files/';
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0700);
@@ -91,7 +101,7 @@ if (isset($_POST['go_translate'])) {
     $import_chunks = array_chunk($import_rows, 10);
 
     foreach ($import_chunks as $chunk_key => $chunk_item) {
-        $list_temp = Translate($params, $chunk_item, $has_transliteration, $params2);
+        $list_temp = Translate($params, $chunk_item, $has_transliteration, $params2, $has_sourceText, $has_translateText);
         if ($list_temp) {
             $import_chunks[$chunk_key] = $list_temp;
         }
@@ -167,8 +177,18 @@ if (isset($_POST['go_translate'])) {
                         <label for="country">Tùy chọn</label>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="save-info"
+                                   name="has_sourceText">
+                            <label class="custom-control-label" for="save-info">Gốc</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="save-info2"
                                    name="has_transliteration">
-                            <label class="custom-control-label" for="save-info">Phiên Âm</label>
+                            <label class="custom-control-label" for="save-info2">Phiên Âm</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="save-info3"
+                                   name="has_translateText">
+                            <label class="custom-control-label" for="save-info3">Dịch</label>
                         </div>
                     </div>
                     <div class="col-md-6">
