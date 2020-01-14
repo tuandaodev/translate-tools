@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d260c038-9944-4c9c-be2c-fc55ed694dee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/srt-time.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import-files/3_exported.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/import-files/3_exported.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/import-files/3_exported_exported.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/Translate.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/Translate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translate-tools.zip" beforeDir="false" afterPath="$PROJECT_DIR$/translate-tools.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import-files/book_exported.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/import-files/captions_new_exported.srt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/import-files/file-loi-thoai-test_exported.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/import-files/file-loi-thoai-test_exported_final_exported.srt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translate-tools.zip" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,32 +49,35 @@
   </component>
   <component name="ProjectId" id="1U91NiTEfE3dUVH7ciPkolc6HTt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\test" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\test\includes" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\test" />
+    </key>
   </component>
   <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
     <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -98,6 +102,7 @@
       <workItem from="1575201402013" duration="399000" />
       <workItem from="1575209441985" duration="3019000" />
       <workItem from="1575267347326" duration="2361000" />
+      <workItem from="1579018986152" duration="3413000" />
     </task>
     <servers />
   </component>
@@ -116,5 +121,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="656" y="257" width="607" height="526" key="find.popup" timestamp="1579022445584">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="257" width="607" height="526" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579022445584" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579020852516">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1579020852516" />
   </component>
 </project>
