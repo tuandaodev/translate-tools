@@ -1,0 +1,31 @@
+https://github.com/overtrue/pinyin
+
+
+https://github.com/duguying/pinyin-php
+
+https://github.com/bullsoft/php-pinyin
+
+https://github.com/overtrue/laravel-pinyin
+
+
+
+API Microsoft: 
+
+a2fb1712983c4807a035c51720b545c1
+
+6272e015eb8f4f829852b089125a7c0a
+
+54ddfb9634d0462eb5b64d92dd5acd48
+
+ebd2b0bebad746449120866dd8d2c4eb
+
+31d329dea86649d9a7465195ff72d1a7
+
+4665d07cbd15466db82440ec8b308952
+
+//"The operation is not allowed because the subscription has exceeded its free quota."
+8709ceedb80b4a7aa5d9f7999108a57c
+
+
+//key xin
+a2fb1712983c4807a035c51720b545c1
